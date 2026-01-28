@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Queen's Mahjery — Coming Soon</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap");
+
+    :root {
+      --bg: #0a0a0a;
+      --fg: #f5f7f8;
+      --muted: #b7b9bd;
+      --teal: #94bec7;
+      --pink: #f3c2bd;
+      --green: #566d31;
+      --glass: rgba(255, 255, 255, 0.06);
+      --stroke: rgba(255, 255, 255, 0.14);
+      --shadow: rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(148, 190, 199, 0.12), transparent 60%),
+        radial-gradient(900px 500px at 80% 20%, rgba(243, 194, 189, 0.12), transparent 55%),
+        radial-gradient(1200px 700px at 50% 100%, rgba(86, 109, 49, 0.16), transparent 60%),
+        linear-gradient(120deg, #0a0a0a 0%, #0f0f12 35%, #0a0a0a 100%);
+      background-size: 140% 140%, 140% 140%, 140% 140%, 220% 220%;
+      animation: gradientShift 18s ease-in-out infinite;
+      color: var(--fg);
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      padding: 32px 20px;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .shell {
+      width: min(680px, 100%);
+      display: grid;
+      gap: 20px;
+      text-align: center;
+      align-items: center;
+    }
+
+    .logo-wrap {
+      width: min(280px, 68vw);
+      margin: 0 auto;
+      padding: 28px;
+      border-radius: 28px;
+      background: var(--glass);
+      border: 1px solid var(--stroke);
+      box-shadow: 0 20px 60px var(--shadow);
+      backdrop-filter: blur(12px);
+      animation: fadeIn 1.4s ease forwards, float 6s ease-in-out infinite;
+      opacity: 0;
+    }
+
+    .logo {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.5));
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      color: var(--fg);
+    }
+
+    .tagline {
+      font-size: clamp(0.98rem, 2.4vw, 1.1rem);
+      color: var(--muted);
+    }
+
+    .form-card {
+      margin-top: 16px;
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, 0.04);
+      display: grid;
+      gap: 12px;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .input-row {
+      display: grid;
+      gap: 12px;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(5, 5, 6, 0.6);
+      color: var(--fg);
+      font-size: 1rem;
+      transition: border 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      outline: none;
+    }
+
+    input[type="email"]::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    input[type="email"]:focus {
+      border-color: rgba(148, 190, 199, 0.7);
+      box-shadow: 0 0 0 4px rgba(148, 190, 199, 0.15);
+      background: rgba(16, 16, 18, 0.9);
+    }
+
+    button {
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0a0a0a;
+      background: linear-gradient(120deg, var(--teal), var(--pink));
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(148, 190, 199, 0.25);
+      filter: saturate(1.1);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .thanks {
+      display: none;
+      font-size: 0.95rem;
+      color: var(--teal);
+    }
+
+    .accent-line {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes gradientShift {
+      0%, 100% {
+        background-position: 0% 50%, 100% 30%, 50% 100%, 0% 50%;
+      }
+      50% {
+        background-position: 100% 40%, 0% 60%, 50% 0%, 100% 50%;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .input-row {
+        grid-template-columns: 1.4fr 0.9fr;
+        align-items: center;
+      }
+
+      button {
+        height: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="logo-wrap">
+      <img class="logo" src="assets/logo.svg" alt="The Queen's Mahjery" />
+    </div>
+    <h1>Coming Fall 2026</h1>
+    <p class="tagline">A modern mahjong studio where heritage meets elevated play.</p>
+    <div class="accent-line"></div>
+    <section class="form-card">
+      <form id="signup-form">
+        <div class="input-row">
+          <input type="email" name="email" placeholder="Enter your email" required />
+          <button type="submit">Sign Up for Updates</button>
+        </div>
+        <span class="thanks" id="thanks">Thanks! We'll be in touch soon.</span>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("signup-form");
+    const thanks = document.getElementById("thanks");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      thanks.style.display = "block";
+      form.reset();
+    });
+  </script>
+</body>
+</html>

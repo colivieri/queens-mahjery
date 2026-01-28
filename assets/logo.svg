@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Cormorant+Garamond:wght@400&amp;display=swap');
+  </style>
+  
+  <!-- Background Circle -->
+  <circle cx="200" cy="200" r="190" fill="#94BEC7"/>
+  
+  <!-- "The Queen's" curved text -->
+  <defs>
+    <path id="topCurve" d="M 55,175 A 150,150 0 0,1 345,175" fill="none"/>
+  </defs>
+  <text fill="#FFFFFF" font-family="'Great Vibes', 'Brush Script MT', cursive" font-size="42">
+    <textPath href="#topCurve" startOffset="50%" text-anchor="middle">The Queen's</textPath>
+  </text>
+  
+  <!-- Pink heart behind crown -->
+  <path d="M 200,315 
+           C 120,270 95,210 120,165
+           C 140,130 175,125 200,155
+           C 225,125 260,130 280,165
+           C 305,210 280,270 200,315 Z" 
+        fill="#EDB8B8"/>
+  
+  <!-- Pink base bar -->
+  <rect x="125" y="290" width="150" height="10" rx="5" fill="#EDB8B8"/>
+  
+  <!-- Bamboo Crown - Left stalk -->
+  <path d="M 150,285 
+           C 145,250 145,200 160,165
+           C 175,135 190,140 190,155
+           C 180,145 170,150 165,175
+           C 155,210 160,255 165,285 Z" 
+        fill="#566D31"/>
+  <!-- Left segments -->
+  <path d="M 153,200 L 167,200" stroke="#94BEC7" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 155,240 L 166,240" stroke="#94BEC7" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Bamboo Crown - Right stalk -->
+  <path d="M 250,285 
+           C 255,250 255,200 240,165
+           C 225,135 210,140 210,155
+           C 220,145 230,150 235,175
+           C 245,210 240,255 235,285 Z" 
+        fill="#566D31"/>
+  <!-- Right segments -->
+  <path d="M 233,200 L 247,200" stroke="#94BEC7" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 234,240 L 245,240" stroke="#94BEC7" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Bamboo arch top -->
+  <path d="M 185,165 
+           C 190,135 195,125 200,120
+           C 205,125 210,135 215,165
+           C 210,145 205,140 200,140
+           C 195,140 190,145 185,165 Z" 
+        fill="#566D31"/>
+  
+  <!-- Center stem and leaves -->
+  <line x1="200" y1="170" x2="200" y2="220" stroke="#566D31" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="186" cy="185" rx="15" ry="7" fill="#566D31" transform="rotate(-50 186 185)"/>
+  <ellipse cx="214" cy="185" rx="15" ry="7" fill="#566D31" transform="rotate(50 214 185)"/>
+  <ellipse cx="200" cy="205" rx="10" ry="6" fill="#566D31"/>
+  
+  <!-- White Bird -->
+  <g fill="#FFFFFF">
+    <!-- Body -->
+    <ellipse cx="200" cy="105" rx="22" ry="12"/>
+    <!-- Head -->
+    <circle cx="218" cy="95" r="11"/>
+    <!-- Beak -->
+    <polygon points="229,95 245,92 229,89"/>
+    <!-- Tail -->
+    <polygon points="175,105 158,98 158,112"/>
+    <!-- Legs -->
+    <rect x="192" y="115" width="4" height="18" rx="2"/>
+    <rect x="204" y="115" width="4" height="18" rx="2"/>
+  </g>
+  
+  <!-- MAHJERY text -->
+  <text x="200" y="365" 
+        fill="#FFFFFF" 
+        font-family="'Cormorant Garamond', 'Times New Roman', Georgia, serif" 
+        font-size="44" 
+        font-weight="400" 
+        text-anchor="middle" 
+        letter-spacing="8">MAHJERY</text>
+  
+</svg>
