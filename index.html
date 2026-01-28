@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Queen's Mahjery — Coming Soon</title>
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap");
 
     * {
       box-sizing: border-box;
@@ -45,9 +45,10 @@
     }
 
     h1 {
+      font-family: "Playfair Display", Georgia, serif;
       font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
+      font-weight: 500;
+      letter-spacing: -0.01em;
       line-height: 1.1;
       animation: fadeIn 1s ease 0.2s forwards;
       opacity: 0;
@@ -163,7 +164,8 @@
     <h1>Coming Fall 2026</h1>
     <p class="tagline">A modern mahjong studio where heritage meets elevated play.</p>
     <div class="form-wrap">
-      <form id="signup-form">
+      <form id="signup-form" name="waitlist" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="waitlist" />
         <input type="email" name="email" placeholder="Enter your email" required />
         <button type="submit">Sign Up</button>
       </form>
@@ -175,10 +177,22 @@
     const form = document.getElementById("signup-form");
     const thanks = document.getElementById("thanks");
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      form.style.display = "none";
-      thanks.style.display = "block";
+      const formData = new FormData(form);
+      
+      try {
+        await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString()
+        });
+        form.style.display = "none";
+        thanks.style.display = "block";
+      } catch (err) {
+        form.style.display = "none";
+        thanks.style.display = "block";
+      }
     });
   </script>
 </body>
