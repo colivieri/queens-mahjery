@@ -246,7 +246,7 @@
     <h1>Coming Fall 2026</h1>
     <p class="tagline">A modern mahjong studio where heritage meets elevated play.</p>
     <div class="form-wrap">
-      <form id="signup-form" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <form id="signup-form" name="waitlist" action="/" method="POST" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="waitlist" />
         <p style="display:none"><input name="bot-field" /></p>
         <input type="email" name="email" placeholder="Enter your email" required />
@@ -273,19 +273,21 @@
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const formData = new FormData(form);
       
       try {
-        await fetch("/", {
+        const response = await fetch("/", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(formData).toString()
+          body: new URLSearchParams(new FormData(form)).toString()
         });
-        form.style.display = "none";
-        thanks.style.display = "block";
+        
+        if (response.ok) {
+          form.style.display = "none";
+          thanks.style.display = "block";
+        }
       } catch (err) {
-        form.style.display = "none";
-        thanks.style.display = "block";
+        // Fallback - submit normally
+        form.submit();
       }
     });
   </script>
